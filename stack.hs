@@ -28,9 +28,13 @@ wordsToTree (w1:w2:w3:_) = Branch op (Leaf n1) (Leaf n2)
     n2 = read w2
     op = charToOp (head w3) 
 
-judge :: String -> Tree
+-- judge :: String -> Op
 judge w3 = 
-  case w3 of 
+  case (head w3) of
+    '+' ->  charToOp (head w3)
+    '-' ->  charToOp (head w3)
+    '*' ->  charToOp (head w3)
+    otherwise -> read w3
       
 
 main = do
