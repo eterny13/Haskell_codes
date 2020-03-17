@@ -1,3 +1,6 @@
+import Control.Monad
+import Text.Printf
+
 queue :: Int -> Int -> [([Char], Int)] ->  [([Char], Int)]
 queue t q [] = []
 queue t q xs = y: queue (snd y) q ys
