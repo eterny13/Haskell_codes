@@ -4,7 +4,7 @@ Practice and Atcoder
 ## How to Install
 ```
 #installer
-curl -sSL Eahttps://get.haskellstack.org/ | sh
+curl -sSL https://get.haskellstack.org/ | sh
 
 # setup
 stack setup
