@@ -1,10 +1,9 @@
--- https://atcoder.jp/contests/s8pc-1/tasks/s8pc_1_e
 import Data.Array
 
 
 calc :: [Int] -> [Int] -> [Int]
-calc (x:[]) ds = ds
-calc (x1:x2:xs) ds = calc (x2:xs) (ds ++ [d])
+calc (x:[]) ds = reverse ds
+calc (x1:x2:xs) ds = d `seq` calc (x2:xs) (d:ds)
   where 
     d = modpow x1 x2 1000000007
     modpow x n m = go n
