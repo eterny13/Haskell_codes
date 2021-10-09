@@ -1,4 +1,4 @@
-// https://atcoder.jp/contests/nikkei2019-final/submissions/26427775
+-- https://atcoder.jp/contests/nikkei2019-final/submissions/26427775
 import Control.Monad
 
 solve :: Int -> [Int] -> [Int]
