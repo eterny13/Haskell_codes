@@ -8,14 +8,16 @@ calc arr q = (at-as, bt-bs)
     (as,bs) = arr ! (-1 + fst q)
     (at,bt) = arr ! (snd q)
 
-cumsum :: Array Int (Int,Int) -> (Int,Int) -> Int -> (Int,Int)
-cumsum arr pt i 
-  | (fst $ arr ! i) == 1 = (at + (snd $ arr ! i), bt)
-  | (fst $ arr ! i) == 2 = (at, bt + (snd $ arr ! i))
+cumsum :: [(Int,Int)] -> [(Int,Int)]
+cumsum ab = scanl (sump) (0,0) ab
+
+sump :: (Int,Int) -> (Int,Int) -> (Int,Int)
+sump (at, bt) (a,b) 
+  | a == 1 = (at + b, bt)
+  | a == 2 = (at, bt + b)
   | otherwise = (at, bt)
-    where
-      at = fst pt
-      bt = snd pt
+
+
 
 main = do
   n <- readLn
@@ -23,7 +25,7 @@ main = do
         [a,b] <- map read . words <$> getLine :: IO [Int]
         return (a,b)
   
-  let arr = scanl (cumsum (listArray (0, n-1) ab)) (0,0) [0..n-1]
+  let arr = cumsum ab
   
   nq <- readLn 
   qs <- replicateM nq $ do
